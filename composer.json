@@ -1,0 +1,7 @@
+{
+    "name": "bitapihub/aoe-php-sdk",
+    "type": "project",
+    "description" : "The PHP SDK for the API Optimization Engine.",
+    "keywords": ["API", "connectivity", "SDK", "application", "website", "development", "PHP"],
+    "license": "MIT"
+}
