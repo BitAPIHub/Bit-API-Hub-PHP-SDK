@@ -1,0 +1,51 @@
+<html>
+	<title>Make a static call through JavaScript</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/tomorrow.min.css">
+	<body style="font-family:arial">
+		Response:
+		<pre>
+			<code id="response" class="json" style="white-space:normal"></code>
+		</pre>
+		HTTP Status Code: <span id="status-code"></span>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+	<script>
+	
+	/**
+	 * We'll use JQuery for AJAX in our example, but you can use any method you'd like.
+	 */
+
+	(function($){
+
+		var config = {
+				
+				'api': 'blockchain',
+				'static-call': 'getdifficulty',
+				'consumer_key': '5674241b-6fe7-48c3-abb5-286d26d91879',
+				'CORS': window.location.protocol + '//' + window.location.hostname
+				
+		};
+		
+		$.ajax({
+			type: "POST",
+			url: 'https://api.bitapihub1.com/v1/',
+			data: config,
+			success: function(data, status, jqXHR)
+			{
+				$('#response').html(jqXHR.responseText);
+				$('#status-code').html(jqXHR.status);
+				hljs.initHighlighting();
+			},
+			error: function(jqXHR, status, error)
+			{
+				$('#response').html($.trim(jqXHR.responseText));
+				$('#status-code').html(jqXHR.status);
+				hljs.initHighlighting();
+			}
+		});
+			
+	})(jQuery);
+
+	</script>
+</html>
